@@ -25,7 +25,7 @@ Route::get('contact', function () {
     return view('frontend.contact');
 });
 
-Route::get('category', function () {
+Route::get('categoryproduk', function () {
     return view('frontend.category');
 });
 Route::get('single-product', function () {
@@ -61,6 +61,12 @@ Route::get('blog', function () {
 Route::get('single-blog', function () {
     return view('frontend.single-blog');
 });
+Route::get('cart', function () {
+    return view('frontend.cart');
+});
+Route::get('checkout', function () {
+    return view('frontend.checkout');
+});
 
 
 
@@ -70,9 +76,12 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 Route::resource('/role', 'RoleController')->except([
     'create', 'show', 'edit', 'update'
 ]);
-Route::get('admin', function () {
-    return view('index');
+Route::get('/admin', function () {
+    return view('admin.admin');
 });
-Route::resource('category', 'ControllerCategory')->except(['create', 'show']);
-Route::resource('product', 'ProductController');
-Route::get('a/home', 'HomeController@index')->name('home');
+Route::resource('/category', 'ControllerCategory')->except(['create', 'show']);
+Route::resource('/product', 'ProductController')->except(['show']); //BAGIAN INI KITA TAMBAHKAN EXCETP KARENA METHOD SHOW TIDAK DIGUNAKAN
+Route::get('/product/bulk', 'ProductController@massUploadForm')->nameRoute::post('/product/bulk', 'ProductController@massUpload')->name('product.saveBulk');('product.bulk'); //TAMBAHKAN ROUTE INI
+
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -18,7 +18,7 @@
     <link href="../backend/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../backend/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+
     <!-- bootstrap-progressbar -->
     <link href="../backend/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -58,10 +58,7 @@
             <!-- sidebar menu -->
             @include('layouts.sidebar')
             <!-- /sidebar menu -->
-
             <!-- /menu footer buttons -->
-            
-
             <!-- /menu footer buttons -->
           </div>
         </div>
@@ -86,12 +83,11 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
-                
                   </div>
                 </li>
 
                 <li role="presentation" class="nav-item dropdown open">
-                  
+
                   <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
                     <li class="nav-item">
                       <a class="dropdown-item">
@@ -218,6 +214,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../backend/build/js/custom.min.js"></script>
-	
+
   </body>
 </html>

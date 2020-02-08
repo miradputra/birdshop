@@ -24,11 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Laratrush::hasRole('admin')) {
-            return redirect('/admin');
+        if(Laratrust::hasRole('admin')) {
+            return redirect('admin.admin');
         }
         if(Laratrust::hasRole('member')) {
-            return redirect('/index');
+            return redirect('frontend.index');
         }
         // return view('home');
     }

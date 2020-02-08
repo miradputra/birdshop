@@ -6,7 +6,7 @@
                     <ul class="nav child_menu">
                       <li><a href="product">product</a></li>
                       <li><a href="category">category</a></li>
-                      <li><a href="index3.html">info Lomba</a></li>
+                      <li><a href="infolomba">info Lomba</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-sitemap"></i>User Management <span class="fa fa-chevron-down"></span></a>
