@@ -9,7 +9,7 @@
             <div class="animated fadeIn">
 
                 <!-- ARAH ACTIONYA ADALAH KE ROUTING DENGAN NAME product.saveBulk -->
-                <form action="{{ route('product.saveBulk') }}" method="post" enctype="multipart/form-data" >
+                <!-- <form action="{{ route('product.saveBulk') }}" method="post" enctype="multipart/form-data" > -->
                     @csrf
                     <div class="row">
                         <div class="col-md-6">

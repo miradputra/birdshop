@@ -1,8 +1,7 @@
 @extends('layouts.backend')
 
 @section('content')
-<div class="col-md-30">
-   <center>
+<div class="col-md-12">
     <div class="card">
         <div class="card-header">
         <main class="main">
@@ -75,7 +74,7 @@
                                         <table class="table table-hover table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
+                                                    <th>No</th>
                                                     <th>Kategori</th>
                                                     <th>Parent</th>
                                                     <th>Created At</th>
@@ -84,9 +83,10 @@
                                             </thead>
                                             <tbody>
                                                 <!-- LOOPING DATA KATEGORI SESUAI JUMLAH DATA YANG ADA DI VARIABLE $CATEGORY -->
+                                                @php $no = 1 @endphp
                                                 @forelse ($category as $val)
                                                 <tr>
-                                                    <td></td>
+                                                    <td>{{$no++}}</td>
                                                     <td><strong>{{ $val->name }}</strong></td>
 
                                                     <!-- MENGGUNAKAN TERNARY OPERATOR, UNTUK MENGECEK, JIKA $val->parent ADA MAKA TAMPILKAN NAMA PARENTNYA, SELAIN ITU MAKA TANMPILKAN STRING - -->
@@ -127,6 +127,5 @@
         </main>
         </div>
     </div>
-    </center>
 </div>
 @endsection

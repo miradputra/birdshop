@@ -32,7 +32,7 @@
                                     <label for="description">Deskripsi</label>
 
                                     <!-- TAMBAHKAN ID YANG NNTINYA DIGUNAKAN UTK MENGHUBUNGKAN DENGAN CKEDITOR -->
-                                    <textarea name="description" id="description" class="form-control">{{ old('description') }}</textarea>
+                                    <textarea name="description" id="ck" class="form-control">{{ old('description') }}</textarea>
                                     <p class="text-danger">{{ $errors->first('description') }}</p>
                                 </div>
                             </div>
@@ -87,14 +87,18 @@
         </div>
     </div>
 </main>
+<script src="{{asset('/ckeditor/ckeditor.js')}}"></script>
+<script>
+CKEDITOR.replace('ck');
+</script>
 @endsection
 
 <!-- PADA ADMIN LAYOUTS, TERDAPAT YIELD JS YANG BERARTI KITA BISA MEMBUAT SECTION JS UNTUK MENAMBAHKAN SCRIPT JS JIKA DIPERLUKAN -->
-@section('js')
-    <!-- LOAD CKEDITOR -->
+<!-- @section('js')
+    LOAD CKEDITOR
     <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
     <script>
         //TERAPKAN CKEDITOR PADA TEXTAREA DENGAN ID DESCRIPTION
         CKEDITOR.replace('description');
     </script>
-@endsection
+@endsection -->

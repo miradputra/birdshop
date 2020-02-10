@@ -6,15 +6,15 @@
                     <ul class="nav child_menu">
                       <li><a href="product">product</a></li>
                       <li><a href="category">category</a></li>
-                      <li><a href="infolomba">info Lomba</a></li>
+                      <!-- <li><a href="infolomba">info Lomba</a></li> -->
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-sitemap"></i>User Management <span class="fa fa-chevron-down"></span></a>
+                  <!-- <li><a><i class="fa fa-sitemap"></i>User Management <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                       <li><a href="#level1_1">User</a>
                       <li><a href="#level1_2">Role</a>
                       </li>
-                  </ul>
+                  </ul> -->
                   <!-- <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="e_commerce.html">E-commerce</a></li>

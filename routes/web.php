@@ -69,7 +69,6 @@ Route::get('checkout', function () {
 });
 
 
-
 Auth::routes();
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
 });
@@ -80,8 +79,8 @@ Route::get('/admin', function () {
     return view('admin.admin');
 });
 Route::resource('/category', 'ControllerCategory')->except(['create', 'show']);
-Route::resource('/product', 'ProductController')->except(['show']); //BAGIAN INI KITA TAMBAHKAN EXCETP KARENA METHOD SHOW TIDAK DIGUNAKAN
-Route::get('/product/bulk', 'ProductController@massUploadForm')->nameRoute::post('/product/bulk', 'ProductController@massUpload')->name('product.saveBulk');('product.bulk'); //TAMBAHKAN ROUTE INI
+Route::resource('/product', 'ProductController')->except(['show']);
 
+// Route::get('/product/bulk', 'ProductController@massUploadForm')->name('product.bulk'); 
 
 Route::get('/home', 'HomeController@index')->name('home');

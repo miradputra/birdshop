@@ -15,7 +15,6 @@
                             <h4 class="card-title">
                                 List Product
                                 <div class="float-right">
-                                    <a href="{{ route('product.bulk') }}" class="btn btn-danger btn-sm">Mass Upload</a>
                                     <a href="{{ route('product.create') }}" class="btn btn-primary btn-sm">Tambah</a>
                                 </div>
                             </h4>
@@ -47,7 +46,8 @@
                                 <table class="table table-hover table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th>No</th>
+                                            <th>Foto</th>
                                             <th>Produk</th>
                                             <th>Harga</th>
                                             <th>Created At</th>
@@ -58,8 +58,11 @@
                                     <tbody>
                                         <!-- LOOPING DATA TERSEBUT MENGGUNAKAN FORELSE -->
                                         <!-- ADAPUN PENJELASAN ADA PADA ARTIKEL SEBELUMNYA -->
+                                        @php $no = 1 @endphp
                                         @forelse ($product as $row)
+                                        
                                         <tr>
+                                            <td>{{$no++}}</td>
                                             <td>
                                                 <!-- TAMPILKAN GAMBAR DARI FOLDER PUBLIC/STORAGE/PRODUCTS -->
                                                 <img src="{{ asset('storage/products/' . $row->image) }}" width="100px" height="100px" alt="{{ $row->name }}">
@@ -80,7 +83,7 @@
                                                 <form action="{{ route('product.destroy', $row->id) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a href="{{ route('category.edit', $row->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                    <a href="{{ route('product.edit', $row->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                                     <button class="btn btn-danger btn-sm">Hapus</button>
                                                 </form>
                                             </td>
