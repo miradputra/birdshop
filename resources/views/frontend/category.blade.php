@@ -17,8 +17,6 @@
         </div>
       </div>
       </section>
-
-
     <!--================Category Product Area =================-->
     <section class="cat_product_area section_gap">
       <div class="container">

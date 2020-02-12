@@ -17,17 +17,17 @@
 Route::get('/', function () {
     return view('auth.login');
 });
-Route::get('index', function () {
-    return view('frontend.index');
-});
+// Route::get('index', function () {
+//     return view('frontend.index');
+// });
 
 Route::get('contact', function () {
     return view('frontend.contact');
 });
 
-Route::get('categoryproduk', function () {
-    return view('frontend.category');
-});
+// Route::get('category', function () {
+//     return view('frontend.category');
+// });
 Route::get('single-product', function () {
     return view('frontend.single-product');
 });
@@ -61,26 +61,39 @@ Route::get('blog', function () {
 Route::get('single-blog', function () {
     return view('frontend.single-blog');
 });
+Route::get('/admin', function () {
+    return view('admin');
+});
 Route::get('cart', function () {
     return view('frontend.cart');
 });
 Route::get('checkout', function () {
     return view('frontend.checkout');
 });
+Route::get('/index', 'Ecommerce\FrontController@index')->name('front.index');
+Route::get('/product', 'Ecommerce\FrontController@product')->name('front.product');
+Route::get('/product/{slug}', 'Ecommerce\FrontController@show')->name('front.show_product');
 
+Route::get('/category/{slug}', 'Ecommerce\FrontController@categoryProduct')->name('front.category');
 
 Auth::routes();
-Route::group(['middleware' => ['auth', 'role:admin']], function () {
-});
-Route::resource('/role', 'RoleController')->except([
-    'create', 'show', 'edit', 'update'
-]);
-Route::get('/admin', function () {
-    return view('admin.admin');
-});
+Route::group(['prefix' => 'admin','middleware' =>['auth']], function () {
+
 Route::resource('/category', 'ControllerCategory')->except(['create', 'show']);
 Route::resource('/product', 'ProductController')->except(['show']);
-
-// Route::get('/product/bulk', 'ProductController@massUploadForm')->name('product.bulk'); 
-
+Route::get('/product/bulk', 'ProductController@massUploadForm')->name('product.bulk'); 
+Route::post('/product/bulk', 'ProductController@massUpload')->name('product.saveBulk');
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+});
+
+
+// Auth::routes();
+// Route::group(['middleware' => ['auth', 'role:admin']], function () {
+// });
+// Route::resource('/role', 'RoleController')->except([
+//     'create', 'show', 'edit', 'update'
+// ]);
+
+

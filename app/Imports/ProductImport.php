@@ -21,10 +21,10 @@ class ProductImport implements WithStartRow, WithChunkReading
         return 2;
     }
 
-        //KEMUDIAN KITA GUNAKAN chunkSize UNTUK MENGONTROL PENGGUNAAN
-        // MEMORY DENGAN MEMBATASI LOAD DATA DALAM SEKALI PROSES
-        public function chunkSize(): int
-        {
-            return 100;
-        }
+    //KEMUDIAN KITA GUNAKAN chunkSize UNTUK MENGONTROL PENGGUNAAN
+    // MEMORY DENGAN MEMBATASI LOAD DATA DALAM SEKALI PROSES
+    public function chunkSize(): int
+    {
+        return 100;
+    }
 }

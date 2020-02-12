@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Jobs\ProductJob;
 use App\Product;
 use App\Category;
 use File;
-use App\Jobs\ProductJob;
 class ProductController extends Controller
 {
     /**
@@ -31,7 +31,7 @@ class ProductController extends Controller
         $product = $product->paginate(10);
         //LOAD VIEW INDEX.BLADE.PHP YANG BERADA DIDALAM FOLDER PRODUCTS
         //DAN PASSING VARIABLE $PRODUCT KE VIEW AGAR DAPAT DIGUNAKAN
-        return view('products.index', compact('product'));
+        return view('admin.products.index', compact('product'));
     }
 
     /**
@@ -45,7 +45,7 @@ class ProductController extends Controller
     $category = Category::orderBy('name', 'DESC')->get();
     //LOAD VIEW create.blade.php` YANG BERADA DIDALAM FOLDER PRODUCTS
     //DAN PASSING DATA CATEGORY
-    return view('products.create', compact('category'));
+    return view('admin.products.create', compact('category'));
     }
 
     /**
@@ -113,7 +113,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id); //AMBIL DATA PRODUK TERKAIT BERDASARKAN ID
         $category = Category::orderBy('name', 'DESC')->get(); //AMBIL SEMUA DATA KATEGORI
-        return view('products.edit', compact('product', 'category')); //LOAD VIEW DAN PASSING DATANYA KE VIEW
+        return view('admin.products.edit', compact('product', 'category')); //LOAD VIEW DAN PASSING DATANYA KE VIEW
     }
 
     /**
@@ -182,29 +182,27 @@ class ProductController extends Controller
     public function massUploadForm()
     {
     $category = Category::orderBy('name', 'DESC')->get();
-    return view('products.bulk', compact('category'));
+    return view('admin.products.bulk', compact('category'));
     }
+    public function massUpload(Request $request)
+    {
+  //VALIDASI DATA YANG DIKIRIM
+    $this->validate($request, [
+        'category_id' => 'required|exists:categories,id',
+        'file' => 'required|mimes:xlsx' //PASTIKAN FORMAT FILE YANG DITERIMA ADALAH XLSX
+    ]);
 
+  	//JIKA FILE-NYA ADA
+    if ($request->hasFile('file')) {
+        $file = $request->file('file');
+        $filename = time() . '-product.' . $file->getClientOriginalExtension();
+        $file->storeAs('public/uploads', $filename); //MAKA SIMPAN FILE TERSEBUT DI STORAGE/APP/PUBLIC/UPLOADS
 
-//     public function massUpload(Request $request)
-//     {
-//   //VALIDASI DATA YANG DIKIRIM
-//     $this->validate($request, [
-//         'category_id' => 'required|exists:categories,id',
-//         'file' => 'required|mimes:xlsx' //PASTIKAN FORMAT FILE YANG DITERIMA ADALAH XLSX
-//     ]);
-
-//   	//JIKA FILE-NYA ADA
-//     if ($request->hasFile('file')) {
-//         $file = $request->file('file');
-//         $filename = time() . '-product.' . $file->getClientOriginalExtension();
-//         $file->storeAs('public/uploads', $filename); //MAKA SIMPAN FILE TERSEBUT DI STORAGE/APP/PUBLIC/UPLOADS
-
-//         //BUAT JADWAL UNTUK PROSES FILE TERSEBUT DENGAN MENGGUNAKAN JOB
-//         //ADAPUN PADA DISPATCH KITA MENGIRIMKAN DUA PARAMETER SEBAGAI INFORMASI
-//         //YAKNI KATEGORI ID DAN NAMA FILENYA YANG SUDAH DISIMPAN
-//         ProductJob::dispatch($request->category_id, $filename);
-//         return redirect()->back()->with(['success' => 'Upload Produk Dijadwalkan']);
-//         }
-    // }
+        //BUAT JADWAL UNTUK PROSES FILE TERSEBUT DENGAN MENGGUNAKAN JOB
+        //ADAPUN PADA DISPATCH KITA MENGIRIMKAN DUA PARAMETER SEBAGAI INFORMASI
+        //YAKNI KATEGORI ID DAN NAMA FILENYA YANG SUDAH DISIMPAN
+        ProductJob::dispatch($request->category_id, $filename);
+        return redirect()->back()->with(['success' => 'Upload Produk Dijadwalkan']);
+        }
+    }
 }

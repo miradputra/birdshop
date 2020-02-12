@@ -28,7 +28,7 @@ class ControllerCategory extends Controller
 
         //LOAD VIEW DARI FOLDER CATEGORIES, DAN DIDALAMNYA ADA FILE INDEX.BLADE.PHP
         //KEMUDIAN PASSING DATA DARI VARIABLE $category & $parent KE VIEW AGAR DAPAT DIGUNAKAN PADA VIEW TERKAIT
-        return view('categories.index', compact('category', 'parent'));
+        return view('admin.categories.index', compact('category', 'parent'));
     }
 
     /**
@@ -95,7 +95,7 @@ class ControllerCategory extends Controller
 
     //LOAD VIEW EDIT.BLADE.PHP PADA FOLDER CATEGORIES
     //DAN PASSING VARIABLE CATEGORY & PARENT
-    return view('categories.edit', compact('category', 'parent'));
+    return view('admin.categories.edit', compact('category', 'parent'));
     }
 
     /**

@@ -10,8 +10,8 @@
                 <p>Very us move be blessed multiply night</p>
               </div>
               <div class="page_link">
-                <a href="index.html">Home</a>
-                <a href="checkout.html">Product Checkout</a>
+                <a href="index">Home</a>
+                <a href="checkout">Product Checkout</a>
               </div>
             </div>
           </div>
