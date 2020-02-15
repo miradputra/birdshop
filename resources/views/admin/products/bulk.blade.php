@@ -17,7 +17,7 @@
                     <form action="{{ route('product.saveBulk') }}" method="post" enctype="multipart/form-data" >
                         @csrf
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-body">
                                         @if (session('success'))

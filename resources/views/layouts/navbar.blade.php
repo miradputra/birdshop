@@ -22,10 +22,10 @@
                       aria-expanded="false">Shop</a>
                     <ul class="dropdown-menu">
                       <li class="nav-item">
-                        <a class="nav-link" href="categoryproduk">Shop Category</a>
+                        <a class="nav-link" href="category">Shop Category</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="single-product">Product Details</a>
+                        <a class="nav-link" href="product">Product Details</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="checkout">Product Checkout</a>

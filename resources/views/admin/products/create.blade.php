@@ -93,12 +93,3 @@ CKEDITOR.replace('ck');
 </script>
 @endsection
 
-<!-- PADA ADMIN LAYOUTS, TERDAPAT YIELD JS YANG BERARTI KITA BISA MEMBUAT SECTION JS UNTUK MENAMBAHKAN SCRIPT JS JIKA DIPERLUKAN -->
-<!-- @section('js')
-    LOAD CKEDITOR
-    <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
-    <script>
-        //TERAPKAN CKEDITOR PADA TEXTAREA DENGAN ID DESCRIPTION
-        CKEDITOR.replace('description');
-    </script>
-@endsection -->
